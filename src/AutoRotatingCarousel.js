@@ -144,6 +144,7 @@ class AutoRotatingCarousel extends Component {
 
   render () {
     const {
+      showDots
       autoplay,
       ButtonProps,
       children,
@@ -224,7 +225,7 @@ class AutoRotatingCarousel extends Component {
                   {label}
                 </Button>}
                 {
-                  hasMultipleChildren &&
+                  hasMultipleChildren && showDots &&(
                   <Dots
                     count={children.length}
                     index={modulo(this.state.slideIndex, children.length)}
@@ -233,7 +234,7 @@ class AutoRotatingCarousel extends Component {
                       [classes.dotsMobileLandscape]: landscape
                     })}
                     onDotClick={this.handleChange}
-                  />
+                  />)
                 }
               </div>
             </div>
@@ -261,14 +262,16 @@ class AutoRotatingCarousel extends Component {
 }
 
 AutoRotatingCarousel.defaultProps = {
-  autoplay: true,
+  autoplay: false,
   interval: 3000,
   mobile: false,
-  open: false,
-  hideArrows: false
+  open: true,
+  hideArrows: true,
+  showDots: false
 }
 
 AutoRotatingCarousel.propTypes = {
+  showDots: PropTypes.bool,
   /** If `false`, the auto play behavior is disabled. */
   autoplay: PropTypes.bool,
   /** Properties applied to the [Button](https://material-ui.com/api/button/) element. */
