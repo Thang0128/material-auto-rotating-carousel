@@ -144,7 +144,7 @@ class AutoRotatingCarousel extends Component {
 
   render () {
     const {
-      showDots
+      showDots,
       autoplay,
       ButtonProps,
       children,
